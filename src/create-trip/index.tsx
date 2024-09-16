@@ -4,6 +4,7 @@ import { SelectBudgetOptions, SelectTravelesList } from "@/constants/options";
 import { useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import OptionCardGrid from "./OptionCardGrid";
+import { toast } from "sonner";
 
 const CreateTrip = () => {
   const [place, setPlace] = useState<any>();
@@ -25,7 +26,8 @@ const CreateTrip = () => {
   };
 
   const OnGenerateTrip = () => {
-    if (formData.noOfDays && formData.noOfDays > 5) {
+    if (Object.values(formData).some((v) => !v)) {
+      toast("Please fill all the fields");
       return;
     }
 
@@ -56,14 +58,8 @@ const CreateTrip = () => {
           <Input
             placeholder={"Ex.3"}
             type="number"
-            value={formData.noOfDays}
             onChange={(e) => {
               const value = parseInt(e.target.value);
-
-              if (isNaN(value) || value < 0) {
-                handleInputChange("noOfDays", undefined);
-                return;
-              }
 
               handleInputChange("noOfDays", value);
             }}

@@ -1,14 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AI_PROMPT, SelectBudgetOptions, SelectTravelesList } from "@/constants/options";
+import { chatSession } from "@/service/AIModel";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
-import OptionCardGrid from "./OptionCardGrid";
 import { toast } from "sonner";
-import { chatSession } from "@/service/AIModel";
+import OptionCardGrid from "./OptionCardGrid";
 
 const CreateTrip = () => {
   const [place, setPlace] = useState<any>();
+  const [openDialog, setOpenDialog] = useState(false);
 
   const [formData, setFormData] = useState<{
     location: any;
@@ -27,6 +29,13 @@ const CreateTrip = () => {
   };
 
   const OnGenerateTrip = async () => {
+    const user = localStorage.getItem("user");
+
+    if (!user) {
+      setOpenDialog(true);
+      return;
+    }
+
     if (Object.values(formData).some((v) => !v)) {
       toast("Please fill all the fields");
       return;
@@ -101,6 +110,16 @@ const CreateTrip = () => {
           <Button onClick={OnGenerateTrip}>Generate Trip</Button>
         </div>
       </div>
+
+      <Dialog open={openDialog}>
+        <DialogTrigger>Open</DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Are you absolutely sure?</DialogTitle>
+            <DialogDescription>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

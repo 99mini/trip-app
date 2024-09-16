@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 
 const Hero = () => {
@@ -9,7 +10,9 @@ const Hero = () => {
         Trip App
         <p className="text-xl text-gray-500 text-center">Hello Trip App description Loem</p>
       </h1>
-      <Button>Get started, It's Free</Button>
+      <Link to="/create-trip">
+        <Button>Get started, It's Free</Button>
+      </Link>
     </div>
   );
 };

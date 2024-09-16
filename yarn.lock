@@ -469,6 +469,11 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.8.tgz#21a907684723bbbaa5f0974cf7730bd797eb8e62"
   integrity sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==
 
+"@google/generative-ai@^0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@google/generative-ai/-/generative-ai-0.19.0.tgz#02cb718e596d390e5356dfb71ab8316acca72a41"
+  integrity sha512-iGf/62v3sTwtEJGJY6S5m7PfkglU8hi1URaxqIjiRg1OItV27xyc4aVeR0og8cDkZFkUlGZKv+23bJtT1QWFzQ==
+
 "@googlemaps/js-api-loader@^1.14.3":
   version "1.16.8"
   resolved "https://registry.yarnpkg.com/@googlemaps/js-api-loader/-/js-api-loader-1.16.8.tgz#1595a2af80ca07e551fc961d921a2437d1cb3643"
